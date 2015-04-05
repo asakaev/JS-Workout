@@ -5,10 +5,7 @@ Array.prototype.duplicate = function () {
     for (var i = 0; i < length; i++) {
         this.push(this[i]);
     }
+    return this;
 };
 
-var array = [1, 2, 3];
-console.log('Array: ' + JSON.stringify(array));
-
-array.duplicate();
-console.log('Duplicated: ' + JSON.stringify(array));
+console.log('Duplicated array: ' + JSON.stringify([1, 2, 3].duplicate()));
