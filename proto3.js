@@ -23,4 +23,7 @@ console.log('Big rabbit name: %s', big.name);
 console.log('It can walk: %s\n', big.canWalk);
 
 console.log('Small rabbit name: %s', small.name);
-console.log('It can walk: %s', small.canWalk);
+console.log('It can walk: %s\n', small.canWalk);
+
+console.log('Animal prototype: %s', JSON.stringify(Animal.prototype));
+console.log('Rabbit prototype: %s', JSON.stringify(Rabbit.prototype));
