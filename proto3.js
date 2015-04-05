@@ -1,6 +1,10 @@
 function Animal(name) {
     this.name = name;
     this.canWalk = true;
+
+    this.sayName = function () {
+        return 'My name is ' + this.name;
+    };
 }
 
 var animal = new Animal('Abstract animal');
@@ -27,3 +31,10 @@ console.log('It can walk: %s\n', small.canWalk);
 
 console.log('Animal prototype: %s', JSON.stringify(Animal.prototype));
 console.log('Rabbit prototype: %s', JSON.stringify(Rabbit.prototype));
+
+Animal.prototype.sayNameYo = function () {
+    return 'Yo, my name is ' + this.name;
+};
+
+console.log(big.sayName());
+console.log(small.sayNameYo());
