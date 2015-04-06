@@ -1,5 +1,5 @@
-var cat = { name: 'Tom'};
-var mouse = { name: 'Jerry'};
+var cat = {name: 'Tom'};
+var mouse = {name: 'Jerry'};
 
 mouse.sayName = function () {
     return this.name;
