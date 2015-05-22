@@ -3,9 +3,10 @@ var pendingResponse;
 var chunks = '';
 
 var connectionCount = 0;
+var server = http.createServer();
 
-http.createServer(function (request, response) {
-  console.log('new connection! (%d)', ++connectionCount);
+server.on('request', function (request, response) {
+  console.log('%d: %s %s', ++connectionCount, request.method, request.url);
 
   request.on('close', function () {
     console.log('client dropped connection');
@@ -19,7 +20,21 @@ http.createServer(function (request, response) {
   } else {
     pendingResponse = response;
   }
-}).listen(8000);
+});
+
+server.on('connection', function(){
+  console.log('tcp connection');
+});
+
+//server.on('close', function() {
+//  console.log('closed');
+//});
+
+//server.on('connect', function() {
+//  console.log('http connect');
+//});
+
+server.listen(8000);
 
 process.openStdin().addListener('data', function (chunk) {
   if (pendingResponse) {
