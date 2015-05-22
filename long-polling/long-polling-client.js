@@ -7,6 +7,8 @@ var http = require('http');
 //  method: 'GET'
 //};
 
+var reconnectCount = 0;
+
 var options = {
   host: '127.0.0.1',
   path: '/',
@@ -22,8 +24,8 @@ var callback = function (response) {
   });
 
   response.on('end', function () {
-    console.log(str);
-    console.log('new connection');
+    console.log('response from server: ' + str);
+    console.log('reconnect! (%d)', ++reconnectCount);
     http.request(options, callback).end();
   });
 };
