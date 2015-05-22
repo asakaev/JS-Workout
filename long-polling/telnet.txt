@@ -1,0 +1,21 @@
+➜  ~  telnet 127.0.0.1 8000
+Trying 127.0.0.1...
+Connected to localhost.
+Escape character is '^]'.
+GET /
+host: 127.0.0.1
+
+HTTP/1.1 200 OK
+Content-Type: text/plain
+Date: Fri, 22 May 2015 14:58:50 GMT
+Connection: close
+
+test
+Connection closed by foreign host.
+
+
+---
+
+tcp connection
+1: GET /
+test
