@@ -1,44 +1,45 @@
 
 
 /**
- * Return list of buckets each contain <= bucketSize of elements
+ * Return list of buckets
  *
- * Skip item that contains > bucketSize elements
+ * Each bucket contains <= bucketSize of total items in all bucket items
+ * Skip element that contains > bucketSize items
  *
- * @param {!Array} array - input array of objects
- * @param {!string} field - field to check
+ * @param {!Array} items - input array of items
+ * @param {!string} elementKey - element key
  * @param {!number} bucketSize - maximum bucket size
  * @return {Array.<Array>}
  */
-function createBuckets(array, field, bucketSize) {
-  var result = [];
+function createBuckets(items, elementKey, bucketSize) {
+  var bucketsResult = [];
 
   var bucket = [];
   var currentBucketSize = 0;
 
-  while (array.length) {
-    var arrayElement = array.shift();
-    var item = arrayElement[field];
+  while (items.length) {
+    var item = items.shift();
+    var element = item[elementKey];
 
-    var correctItem = Array.isArray(item) && item.length <= bucketSize;
-    if (!correctItem) {
+    var correctElement = Array.isArray(element) && element.length <= bucketSize;
+    if (!correctElement) {
       continue;
     }
 
-    currentBucketSize += item.length;
+    currentBucketSize += element.length;
     if (currentBucketSize <= bucketSize) {
-      bucket.push(arrayElement);
+      bucket.push(item);
     } else {
-      result.push(bucket);
+      bucketsResult.push(bucket);
 
       bucket = [];
-      currentBucketSize = item.length;
-      bucket.push(arrayElement);
+      currentBucketSize = element.length;
+      bucket.push(item);
     }
   }
 
-  result.push(bucket);
-  return result;
+  bucketsResult.push(bucket);
+  return bucketsResult;
 }
 
 
@@ -62,9 +63,9 @@ var countries = [
 ];
 
 var maxBucketSize = 12;
-var field = 'cities';
+var key = 'cities';
 
-var arrayOfBuckets = createBuckets(countries, field, maxBucketSize);
+var arrayOfBuckets = createBuckets(countries, key, maxBucketSize);
 
 //[ [ { country: 'Russia', cities: [Object] },
 //  { country: 'Ukraine', cities: [Object] } ],
