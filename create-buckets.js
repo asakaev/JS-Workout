@@ -1,11 +1,14 @@
 
 
 /**
- * Return array of buckets
- * @param {Array} array
- * @param {string} field
- * @param {number} bucketSize
- * @return {Array}
+ * Return list of buckets each contain <= bucketSize of elements
+ *
+ * Skip item that contains > bucketSize elements
+ *
+ * @param {!Array} array - input array of objects
+ * @param {!string} field - field to check
+ * @param {!number} bucketSize - maximum bucket size
+ * @return {Array.<Array>}
  */
 function createBuckets(array, field, bucketSize) {
   var result = [];
