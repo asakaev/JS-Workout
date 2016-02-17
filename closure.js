@@ -6,7 +6,7 @@ for (var i = 0; i < 5; i++) {
    * @param {Number} i
    */
   function f(i) {
-    setTimeout(function () {
+    setTimeout(function() {
       console.log('Timeout', i);
     }, 1000);
   }
