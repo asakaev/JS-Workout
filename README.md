@@ -1,2 +1,1 @@
-# JavaScriptExamples
-JavaScript Examples
+# JS-Workout
