@@ -1,0 +1,10 @@
+{
+  "name": "js-workout",
+  "version": "0.0.1",
+  "devDependencies": {
+    "mocha": "^3.2.0"
+  },
+  "scripts": {
+    "test": "node_modules/.bin/mocha --ui tdd"
+  }
+}
