@@ -5,6 +5,7 @@ var test = mocha.test
 var assert = require('assert')
 var intNotZero = require('../coursera/coursera-01.js').intNotZero
 var sum = require('../coursera/coursera-01.js').sum
+var max = require('../coursera/coursera-01.js').max
 
 
 suite('ListsSuite', function() {
@@ -30,6 +31,8 @@ suite('ListsSuite', function() {
 
   // Lists
 
+  // sum
+
   test('sum of a few numbers', function() {
     assert(sum([1, 2, 0]) === 3)
   })
@@ -48,6 +51,29 @@ suite('ListsSuite', function() {
 
   test('sum of ones', function() {
     assert(sum([1, 1, 1]) === 3)
+  })
+
+  // max
+
+  test('max of a few numbers', function() {
+    assert(max([3, 7, 2]) === 7)
+  })
+
+  test('max of empty list exception', function() {
+    function block() { max([]) }
+    assert.throws(block, Error)
+  })
+
+  test('max of zeroes', function() {
+    assert(max([0, 0, 0]) === 0)
+  })
+
+  test('max of negative', function() {
+    assert(max([-1,5,0]) === 5)
+  })
+
+  test('max of ones', function() {
+    assert(max([1, 1, 1]) === 1)
   })
 
 })
