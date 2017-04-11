@@ -1,7 +1,7 @@
 
 function intNotZero(x) {
-    if (x === 0) throw new Error('zero is not allowed')
-    else return x
+  if (x === 0) throw new Error('zero is not allowed')
+  else return x
 }
 
 
