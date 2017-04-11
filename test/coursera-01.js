@@ -1,8 +1,8 @@
 var mocha = require('mocha')
 var suite = mocha.suite
 var test = mocha.test
-
 var assert = require('assert')
+
 var intNotZero = require('../coursera/coursera-01.js').intNotZero
 var sum = require('../coursera/coursera-01.js').sum
 var max = require('../coursera/coursera-01.js').max

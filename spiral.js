@@ -1,8 +1,13 @@
 
 function spiral(matrix) {
+  var m = Array.from(matrix)
   return matrix.length === 1 ?
-    matrix[0] :
-    matrix.shift().concat(spiral(transpose(matrix).reverse()))
+    m[0] :
+    m.shift().concat(spiral(transpose(m).reverse()))
+}
+
+function outerSpiral(matrix) {
+  return spiral(matrix).reverse()
 }
 
 function transpose(matrix) {
@@ -14,11 +19,4 @@ function transpose(matrix) {
 }
 
 
-var matrix = [
-  [1, 2, 3],
-  [4, 5, 6],
-  [7, 8, 9]
-]
-
-var outerSpiral = spiral(matrix).reverse()
-console.log(outerSpiral)
+module.exports = { spiral: spiral, outerSpiral: outerSpiral }
