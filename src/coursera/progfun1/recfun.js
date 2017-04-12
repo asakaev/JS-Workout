@@ -1,4 +1,18 @@
 
+// Exercise 1
+
+
+/**
+ * @param {Number} c
+ * @param {Number} r
+ * @returns {Number}
+ */
+function pascal(c, r) {
+  return c === 0 || c === r ?
+    0 :
+    pascal(c - 1, r - 1) + pascal(c, r - 1)
+}
+
 
 // Exercise 2
 

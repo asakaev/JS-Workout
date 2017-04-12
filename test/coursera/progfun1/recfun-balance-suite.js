@@ -3,7 +3,7 @@ var suite = mocha.suite
 var test = mocha.test
 var assert = require('assert')
 
-var balance = require('../coursera/progfun1-recfun').balance
+var balance = require('../../../src/coursera/progfun1/recfun').balance
 
 
 suite('BalanceSuite', function() {
