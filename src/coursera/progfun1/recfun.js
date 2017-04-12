@@ -9,7 +9,7 @@
  */
 function pascal(c, r) {
   return c === 0 || c === r ?
-    0 :
+    1 :
     pascal(c - 1, r - 1) + pascal(c, r - 1)
 }
 
@@ -41,4 +41,4 @@ function balanceFunc(chars, level) {
 }
 
 
-module.exports = { balance: balance }
+module.exports = { pascal: pascal, balance: balance }
