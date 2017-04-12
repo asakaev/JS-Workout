@@ -3,9 +3,9 @@ var suite = mocha.suite
 var test = mocha.test
 var assert = require('assert')
 
-var intNotZero = require('../coursera/coursera-01.js').intNotZero
-var sum = require('../coursera/coursera-01.js').sum
-var max = require('../coursera/coursera-01.js').max
+var intNotZero = require('./progfun1-example').intNotZero
+var sum = require('./progfun1-example').sum
+var max = require('./progfun1-example').max
 
 
 suite('ListsSuite', function() {
