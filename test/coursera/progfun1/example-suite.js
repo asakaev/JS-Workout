@@ -3,6 +3,7 @@ var suite = mocha.suite
 var test = mocha.test
 var assert = require('assert')
 
+var List = require('../../../src/collections/list').List
 var max = require('../../../src/coursera/progfun1/example').max
 var intNotZero = require('../../../src/coursera/progfun1/example').intNotZero
 var sum = require('../../../src/coursera/progfun1/example').sum
@@ -21,7 +22,7 @@ suite('ListsSuite', function() {
   })
 
   test('sum of a few numbers', function() {
-    assert.equal(14, sum([5, 3, 6]))
+    assert.equal(14, sum(List(5, 3, 6)))
   })
 
   test('intNotZero throws an exception if its argument is 0', function() {
@@ -34,46 +35,46 @@ suite('ListsSuite', function() {
   // sum
 
   test('sum of a few numbers', function() {
-    assert(sum([1, 2, 0]) === 3)
+    assert(sum(List(1, 2, 0)) === 3)
   })
 
   test('sum of zeroes', function() {
-    assert(sum([0, 0, 0]) === 0)
+    assert(sum(List(0, 0, 0)) === 0)
   })
 
   test('sum of negative', function() {
-    assert(sum([-5, 5, 2]) === 2)
+    assert(sum(List(-5, 5, 2)) === 2)
   })
 
   test('sum of none', function() {
-    assert(sum([]) === 0)
+    assert(sum(List()) === 0)
   })
 
   test('sum of ones', function() {
-    assert(sum([1, 1, 1]) === 3)
+    assert(sum(List(1, 1, 1)) === 3)
   })
 
   // max
 
   test('max of a few numbers', function() {
-    assert(max([3, 7, 2]) === 7)
+    assert(max(List(3, 7, 2)) === 7)
   })
 
   test('max of empty list exception', function() {
-    function block() { max([]) }
+    function block() { max(List()) }
     assert.throws(block, Error)
   })
 
   test('max of zeroes', function() {
-    assert(max([0, 0, 0]) === 0)
+    assert(max(List(0, 0, 0)) === 0)
   })
 
   test('max of negative', function() {
-    assert(max([-1,5,0]) === 5)
+    assert(max(List(-1, 5, 0)) === 5)
   })
 
   test('max of ones', function() {
-    assert(max([1, 1, 1]) === 1)
+    assert(max(List(1, 1, 1)) === 1)
   })
 
 })

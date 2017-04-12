@@ -9,20 +9,20 @@ function intNotZero(x) {
 }
 
 /**
- * @param {Array} list
+ * @param {List} list
  * @returns {Number}
  */
 function sum(list) {
-  return !list.length ? 0 : list.shift() + sum(list)
+  return list.isEmpty() ? 0 : list.head() + sum(list.tail())
 }
 
 /**
- * @param {Array} list
+ * @param {List} list
  * @returns {Number}
  */
 function max(list) {
-  if (!list.length) throw new Error('NoSuchElementException')
-  return list.length > 1 ? maxAux(list.shift(), max(list)) : list.shift()
+  if (list.isEmpty()) throw new Error('NoSuchElementException')
+  return list.size() > 1 ? maxAux(list.head(), max(list.tail())) : list.head()
 
 }
 

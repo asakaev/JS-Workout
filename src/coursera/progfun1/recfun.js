@@ -17,7 +17,7 @@ function pascal(c, r) {
 // Exercise 2
 
 /**
- * @param {Array} chars
+ * @param {List} chars
  * @returns {Boolean}
  */
 function balance(chars) {
@@ -26,18 +26,18 @@ function balance(chars) {
 
 
 /**
- * @param {Array} chars
+ * @param {List} chars
  * @param {Number} level
  * @returns {Boolean}
  */
 function balanceFunc(chars, level) {
-  return !chars.length ?
+  return chars.isEmpty() ?
     level === 0 :
-    chars[0] === '(' ?
-      balanceFunc(chars.splice(1), level + 1) :
-      chars[0] === ')' ?
-        level > 0 && balanceFunc(chars.splice(1), level - 1) :
-        balanceFunc(chars.splice(1), level)
+    chars.head() === '(' ?
+      balanceFunc(chars.tail(), level + 1) :
+      chars.head() === ')' ?
+        level > 0 && balanceFunc(chars.tail(), level - 1) :
+        balanceFunc(chars.tail(), level)
 }
 
 
