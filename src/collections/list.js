@@ -2,11 +2,16 @@
 /**
  * Immutable List
  *
- * @param {?Array} array
+ * @param args
  * @constructor
  */
-function List(array) {
-  this.array = Array.isArray(array) ? array : Array.from(arguments)
+function List(args) {
+  if (!(this instanceof List)) {
+    return new List(argsToArray(arguments))
+  }
+
+  /** @private */
+  this.array = Array.isArray(args) ? args : argsToArray(arguments)
 }
 
 /**
@@ -38,19 +43,12 @@ List.prototype.size = function() {
 }
 
 
-/**
- * @param param
- * @returns {List}
- */
-function ListCompanion(param) {
-  if (typeof param === 'string') {
-    return new List(param.split(''))
-  } else if (Array.isArray(param)) {
-    return new List(param)
-  } else {
-    return new List(Array.from(arguments))
-  }
+// todo: wtf
+function argsToArray(argv) {
+  return argv.length === 1 ?
+    typeof argv[0] === 'string' ? argv[0].split('') : [argv[0]] :
+    Array.apply(null, argv)
 }
 
 
-module.exports = { List: ListCompanion }
+module.exports = { List: List }
