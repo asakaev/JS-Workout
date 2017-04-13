@@ -22,8 +22,7 @@ function sum(list) {
  */
 function max(list) {
   if (list.isEmpty()) throw new Error('NoSuchElementException')
-  return list.size() > 1 ? maxAux(list.head(), max(list.tail())) : list.head()
-
+  return list.tail().isEmpty() ? list.head() : maxAux(list.head(), max(list.tail()))
 }
 
 /**

@@ -2,7 +2,7 @@
 /**
  * Immutable List
  *
- * @param args
+ * @param args - elements, [] or String
  * @constructor
  */
 function List(args) {
