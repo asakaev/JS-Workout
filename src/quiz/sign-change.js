@@ -1,6 +1,6 @@
 
 /**
- * @param xs Array.<number>
+ * @param xs {!Array.<number>}
  * @returns {number}
  */
 function signChange(xs) {
