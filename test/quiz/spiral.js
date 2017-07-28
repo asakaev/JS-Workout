@@ -2,8 +2,9 @@ var mocha = require('mocha')
 var suite = mocha.suite
 var test = mocha.test
 var assert = require('assert')
-var outerSpiral = require('../spiral.js').outerSpiral
-var spiral = require('../spiral.js').spiral
+
+var outerSpiral = require('../../src/quiz/spiral').outerSpiral
+var spiral = require('../../src/quiz/spiral').spiral
 
 
 suite('SpiralSuite', function() {
