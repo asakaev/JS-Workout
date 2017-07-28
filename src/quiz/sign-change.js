@@ -17,6 +17,4 @@ function signChange(xs) {
 }
 
 
-module.exports = {
-  signChange: signChange
-};
+module.exports = {signChange: signChange}

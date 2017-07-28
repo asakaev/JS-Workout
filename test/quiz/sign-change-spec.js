@@ -3,7 +3,7 @@ const suite = mocha.suite
 const test = mocha.test
 const assert = require('assert')
 
-const signChange = require("../../src/quiz/sign-change").signChange;
+const signChange = require('../../src/quiz/sign-change').signChange
 
 
 suite('SignChangeSuite', function() {
