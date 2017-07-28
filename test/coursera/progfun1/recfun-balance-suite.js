@@ -3,7 +3,7 @@ var suite = mocha.suite
 var test = mocha.test
 var assert = require('assert')
 
-var List = require('../../../src/collections/list').List
+var List = require('../../../src/collections/list-naive').List
 var balance = require('../../../src/coursera/progfun1/recfun').balance
 
 

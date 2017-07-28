@@ -3,7 +3,7 @@ var suite = mocha.suite
 var test = mocha.test
 var assert = require('assert')
 
-var List = require('../../../src/collections/list').List
+var List = require('../../../src/collections/list-naive').List
 var max = require('../../../src/coursera/progfun1/example').max
 var intNotZero = require('../../../src/coursera/progfun1/example').intNotZero
 var sum = require('../../../src/coursera/progfun1/example').sum
