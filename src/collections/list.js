@@ -5,8 +5,7 @@
  * @template T
  */
 function ListFactory() {
-  return Object.keys(arguments)
-    .map((_) => arguments[_])
+  return Object.values(arguments)
     .reduce((acc, curr) => acc.append(curr), new Nil)
 }
 
