@@ -72,8 +72,10 @@ suite('ListSuite', function() {
   test('flatten', function() {
     const xs = ListFactory(ListFactory(1, 2), ListFactory(3, 4))
     const xs2 = ListFactory(ListFactory(), ListFactory())
+    const xs3 = ListFactory()
     assert.deepEqual(xs.flatten(), ListFactory(1, 2, 3, 4))
     assert.deepEqual(xs2.flatten(), ListFactory())
+    assert.deepEqual(xs3.flatten(), ListFactory())
   })
 
   test('mkString', function() {

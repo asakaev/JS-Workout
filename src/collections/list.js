@@ -1,8 +1,8 @@
-// TODO: SeqFactory varargs JSDoc
-
 
 /**
- * @returns {List}
+ * @param {...T} arguments
+ * @returns {List.<T>}
+ * @template T
  */
 function ListFactory() {
   const size = arguments.length
@@ -32,7 +32,8 @@ class List {
   isEmpty() { return false }
 
   /**
-   * @returns T
+   * @returns {T}
+   * @template T
    */
   head() { return this._head }
 
@@ -116,6 +117,12 @@ class List {
    * @template T,S
    */
   foldLeft(f, initValue) {
+
+    /**
+     * @param xs {List.<T>}
+     * @param acc {List.<T>}
+     * @template T
+     */
     const loop = (xs, acc) => xs.isEmpty()
       ? acc
       : loop(xs.tail(), f(acc, xs.head()))
@@ -124,8 +131,6 @@ class List {
   }
 
   /**
-   * List[List[T]] -> List[T]
-   *
    * @returns {List.<T>}
    * @template T
    */
