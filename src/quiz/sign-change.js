@@ -11,13 +11,11 @@ function signChange(xs) {
   const sameSign = (a, b) => ((a >= 0) && (b >= 0)) || ((a < 0) && (b < 0))
 
   const count = (xs, initValue) => {
-    const folded = xs.reduce(({prev, stack}, curr) => {
-      return sameSign(prev, curr)
-        ? {prev: curr, stack: stack}
-        : {prev: curr, stack: stack + 1}
-    }, {prev: initValue, stack: 0})
+    const f = ({prev, stack}, curr) => sameSign(prev, curr)
+      ? {prev: curr, stack: stack}
+      : {prev: curr, stack: stack + 1}
 
-    return folded.stack
+    return xs.reduce(f, {prev: initValue, stack: 0}).stack
   }
 
   return isEmpty(xs) ? 0 : count(tail(xs), head(xs))
