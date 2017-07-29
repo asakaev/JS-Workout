@@ -5,12 +5,9 @@
  * @template T
  */
 function ListFactory() {
-  const size = arguments.length
-  const toList = (xs, i) => i === size
-    ? new Nil()
-    : new List(xs[i], toList(xs, i + 1))
-
-  return toList(arguments, 0)
+  return Object.keys(arguments)
+    .map((_) => arguments[_])
+    .reduce((acc, curr) => acc.append(curr), new Nil)
 }
 
 
