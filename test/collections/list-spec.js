@@ -3,9 +3,8 @@ const suite = mocha.suite
 const test = mocha.test
 const assert = require('assert')
 
-const ListFactory = require("./list").ListFactory;
-const Nil = require('./list').Nil
-
+const ListFactory = require('../../src/collections/list').ListFactory
+const Nil = require('../../src/collections/list').Nil
 
 
 suite('ListSuite', function() {
@@ -68,6 +67,28 @@ suite('ListSuite', function() {
     assert.equal(res2, 2)
     assert.equal(res3, 0)
     assert.equal(res4, 2)
+  })
+
+  test('flatten', function() {
+    const xs = ListFactory(ListFactory(1, 2), ListFactory(3, 4))
+    const xs2 = ListFactory(ListFactory(), ListFactory())
+    assert.deepEqual(xs.flatten(), ListFactory(1, 2, 3, 4))
+    assert.deepEqual(xs2.flatten(), ListFactory())
+  })
+
+  test('mkString', function() {
+    const xs = ListFactory(1, 2)
+    const empty = ListFactory()
+    assert.equal(xs.mkString(''), '12')
+    assert.equal(xs.mkString(', '), '1, 2')
+    assert.equal(empty.mkString(':'), '')
+  })
+
+  test('toString', function() {
+    const xs = ListFactory(1, 2)
+    const empty = ListFactory()
+    assert.equal(xs.toString(), 'List(1, 2)')
+    assert.equal(empty.toString(), 'List()')
   })
 
 })

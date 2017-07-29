@@ -38,26 +38,30 @@ class List {
 
   /**
    * @returns {List.<T>}
+   * @template T
    */
   tail() { return this._tail }
 
   /**
    * Add at the beginning of the list
-   * @param x {*}
-   * @returns {List}
+   * @param x {T}
+   * @returns {List.<T>}
+   * @template T
    */
   prepend(x) { return new List(x, this) }
 
   /**
    * Add in front of the list
-   * @param x {*}
-   * @returns {List}
+   * @param x {T}
+   * @returns {List.<T>}
+   * @template T
    */
   append(x) { // TODO: tailrec?
 
     /**
-     * @param xs {List.<*>}
-     * @param x {*}
+     * @param xs {List.<T>}
+     * @param x {T}
+     * @template T
      */
     const aux = (xs, x) => xs.isEmpty()
       ? new List(x, new Nil)
@@ -67,13 +71,15 @@ class List {
   }
 
   /**
-   * @returns {List.<*>}
+   * @returns {List.<T>}
+   * @template T
    */
   reverse() {
 
     /**
-     * @param xs {List.<*>}
-     * @param acc {List.<*>}
+     * @param xs {List.<T>}
+     * @param acc {List.<T>}
+     * @template T
      */
     const aux = (xs, acc) => xs.isEmpty()
       ? acc
@@ -86,13 +92,15 @@ class List {
 
   /**
    * @param f {function}
-   * @returns {List.<*>}
+   * @returns {List.<T>}
+   * @template T
    */
   map(f) { // TODO: tailrec
 
     /**
-     * @param xs {List.<*>}
-     * @param acc {List.<*>}
+     * @param xs {List.<T>}
+     * @param acc {List.<T>}
+     * @template T
      */
     const aux = (xs, acc) => xs.isEmpty()
       ? acc
@@ -103,8 +111,9 @@ class List {
 
   /**
    * @param f {function}
-   * @param initValue {*}
-   * @returns {*}
+   * @param initValue {S}
+   * @returns {S}
+   * @template T,S
    */
   foldLeft(f, initValue) {
     const loop = (xs, acc) => xs.isEmpty()
@@ -114,10 +123,40 @@ class List {
     return loop(this, initValue)
   }
 
+  /**
+   * List[List[T]] -> List[T]
+   *
+   * @returns {List.<T>}
+   * @template T
+   */
+  flatten() {
+    const f = (acc, xs) => xs.foldLeft((acc, x) => acc.append(x), acc)
+    return this.foldLeft(f, new Nil)
+  }
+
+  /**
+   * @param sep {string}
+   * @returns {string}
+   */
+  mkString(sep) {
+    const f = (acc, curr) => `${acc}${sep}${curr}`
+    return this.isEmpty()
+      ? ''
+      : this.tail().foldLeft(f, this.head())
+  }
+
+  /**
+   * @returns {string}
+   */
+  toString() {
+    return `List(${this.mkString(', ')})`
+  }
+
 }
 
 
 class Nil extends List {
+  constructor() { super(null, null) }
 
   /**
    * @returns {boolean}
