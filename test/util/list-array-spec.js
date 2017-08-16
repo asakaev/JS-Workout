@@ -4,6 +4,8 @@ const test = mocha.test
 const assert = require('assert')
 
 const isEmpty = require('../../src/util/list-array').isEmpty
+const tail = require('../../src/util/list-array').tail
+const head = require('../../src/util/list-array').head
 const zip = require('../../src/util/list-array').zip
 
 
@@ -17,7 +19,30 @@ suite('isEmptySuite', function() {
   })
 })
 
-suite('ZipSuite', function() {
+
+suite('headSuite', function() {
+  test('empty collection', function() {
+    assert.equal(head([]), undefined) // TODO: exception
+  })
+
+  test('non empty collection', function() {
+    assert.equal(head([1, 2]), 1)
+  })
+})
+
+
+suite('tailSuite', function() {
+  test('empty collection', function() {
+    assert.deepEqual(tail([]), []) // TODO: exception
+  })
+
+  test('non empty collection', function() {
+    assert.deepEqual(tail([1, 2, 3]), [2, 3])
+  })
+})
+
+
+suite('zipSuite', function() {
   test('collections with same size', function() {
     const xs1 = [1, 2, 3]
     const xs2 = [4, 5, 6]
