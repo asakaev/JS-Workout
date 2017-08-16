@@ -10,9 +10,13 @@ const isEmpty = (xs) => xs.length < 1
 /**
  * @param {!Array.<T>} xs
  * @returns {T}
+ * @throws {Error}
  * @template T
  */
-const head = (xs) => xs[0]
+const head = (xs) => {
+  if (isEmpty(xs)) throw new Error('head.empty')
+  return xs[0]
+}
 
 
 /**
@@ -26,6 +30,7 @@ const tail = (xs) => xs.slice(1, xs.length)
 /**
  * @param {!Array.<T>} xs
  * @param {T} x
+ * @returns {Array.<T>}
  * @template T
  */
 const append = (xs, x) => xs.concat([x])

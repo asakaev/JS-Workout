@@ -22,7 +22,7 @@ suite('isEmptySuite', function() {
 
 suite('headSuite', function() {
   test('empty collection', function() {
-    assert.equal(head([]), undefined) // TODO: exception
+    assert.throws(_ => head([]))
   })
 
   test('non empty collection', function() {
@@ -33,7 +33,7 @@ suite('headSuite', function() {
 
 suite('tailSuite', function() {
   test('empty collection', function() {
-    assert.deepEqual(tail([]), []) // TODO: exception
+    assert.deepEqual(tail([]), [])
   })
 
   test('non empty collection', function() {
