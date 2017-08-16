@@ -35,12 +35,10 @@ function signChange(xs) {
  * @param xs {!Array.<number>}
  * @returns {number}
  */
-function signChangeZip(xs) {
-  return zip(xs, tail(xs))
-    .map(([t1, t2]) => !sameSign(t1, t2))
-    .filter(_ => _ === true)
-    .reduce(_ => _ + 1, 0)
-}
+const signChangeZip = xs => zip(xs, tail(xs))
+  .map(([t1, t2]) => !sameSign(t1, t2))
+  .filter(_ => _ === true)
+  .reduce(_ => _ + 1, 0)
 
 
 module.exports = {signChange, signChangeZip}
