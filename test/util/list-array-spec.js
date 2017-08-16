@@ -3,11 +3,21 @@ const suite = mocha.suite
 const test = mocha.test
 const assert = require('assert')
 
-const zip = require('./list-array').zip
+const isEmpty = require('../../src/util/list-array').isEmpty
+const zip = require('../../src/util/list-array').zip
 
+
+suite('isEmptySuite', function() {
+  test('empty collection', function() {
+    assert.equal(isEmpty([]), true)
+  })
+
+  test('non empty collection', function() {
+    assert.equal(isEmpty([1]), false)
+  })
+})
 
 suite('ZipSuite', function() {
-
   test('collections with same size', function() {
     const xs1 = [1, 2, 3]
     const xs2 = [4, 5, 6]
@@ -42,5 +52,4 @@ suite('ZipSuite', function() {
     const expected = [[1, 5], [2, 6]]
     assert.deepEqual(zip(xs1, xs2), expected)
   })
-
 })
