@@ -1,25 +1,46 @@
+const isEmpty = require('../util/list-array').isEmpty
+const head = require('../util/list-array').head
+const tail = require('../util/list-array').tail
+const zip = require('../util/list-array').zip
+
+
+/**
+ * @param {number} a
+ * @param {number} b
+ * @returns {boolean}
+ */
+const sameSign = (a, b) => ((a >= 0) && (b >= 0)) || ((a < 0) && (b < 0))
+
 
 /**
  * @param xs {!Array.<number>}
  * @returns {number}
  */
 function signChange(xs) {
-  const isEmpty = (xs) => xs.length === 0
-  const head = (xs) => xs[0]
-  const tail = (xs) => xs.slice(1, xs.length)
-
-  const sameSign = (a, b) => ((a >= 0) && (b >= 0)) || ((a < 0) && (b < 0))
+  const Acc = (prev, stack) => { return {prev, stack} }
 
   const count = (xs, initValue) => {
     const f = ({prev, stack}, curr) => sameSign(prev, curr)
-      ? {prev: curr, stack: stack}
-      : {prev: curr, stack: stack + 1}
+      ? Acc(curr, stack)
+      : Acc(curr, stack + 1)
 
-    return xs.reduce(f, {prev: initValue, stack: 0}).stack
+    return xs.reduce(f, Acc(initValue, 0)).stack
   }
 
   return isEmpty(xs) ? 0 : count(tail(xs), head(xs))
 }
 
 
-module.exports = {signChange: signChange}
+/**
+ * @param xs {!Array.<number>}
+ * @returns {number}
+ */
+function signChangeZip(xs) {
+  return zip(xs, tail(xs))
+    .map(([t1, t2]) => !sameSign(t1, t2))
+    .filter(_ => _ === true)
+    .reduce(_ => _ + 1, 0)
+}
+
+
+module.exports = {signChange, signChangeZip}

@@ -3,7 +3,7 @@ const suite = mocha.suite
 const test = mocha.test
 const assert = require('assert')
 
-const zip = require('../../src/util/zip').zip
+const zip = require('./list-array').zip
 
 
 suite('ZipSuite', function() {
