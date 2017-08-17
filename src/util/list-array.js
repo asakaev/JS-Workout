@@ -43,10 +43,9 @@ const append = (xs, x) => xs.concat([x])
  * @template T
  */
 const zip = (xs1, xs2) => {
-  const zipAux = (a, b, acc) =>
-    isEmpty(a) || isEmpty(b)
-      ? acc
-      : zipAux(tail(a), tail(b), append(acc, [head(a), head(b)]))
+  const zipAux = (a, b, acc) => isEmpty(a) || isEmpty(b)
+    ? acc
+    : zipAux(tail(a), tail(b), append(acc, [head(a), head(b)]))
 
   return zipAux(xs1, xs2, [])
 }
