@@ -42,7 +42,7 @@ const append = (xs, x) => xs.concat([x])
  * @returns {Array.<Array.<T>>}
  * @template T
  */
-function zip(xs1, xs2) {
+const zip = (xs1, xs2) => {
   const zipAux = (a, b, acc) =>
     isEmpty(a) || isEmpty(b)
       ? acc
